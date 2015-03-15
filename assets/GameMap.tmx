@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="100" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="Walls" tilewidth="16" tileheight="16">
+  <tile id="0">
+   <image width="16" height="16" source="Wall_01.png"/>
+  </tile>
+  <tile id="1">
+   <image width="16" height="16" source="Mud_01.png"/>
+  </tile>
+  <tile id="2">
+   <image width="16" height="16" source="flame.png"/>
+  </tile>
+  <tile id="3">
+   <image width="16" height="16" source="Ground_02.png"/>
+  </tile>
+  <tile id="4">
+   <image width="16" height="16" source="Ground_01.png"/>
+  </tile>
+  <tile id="5">
+   <image width="16" height="16" source="black-block.png"/>
+  </tile>
+  <tile id="6">
+   <image width="16" height="16" source="cement-block.png"/>
+  </tile>
+  <tile id="7">
+   <image width="16" height="16" source="Wall_02.png"/>
+  </tile>
+  <tile id="8">
+   <image width="16" height="16" source="Water_01.png"/>
+  </tile>
+  <tile id="9">
+   <image width="16" height="16" source="Wall_03.png"/>
+  </tile>
+  <tile id="10">
+   <image width="16" height="16" source="Wall_04.png"/>
+  </tile>
+  <tile id="11">
+   <image width="16" height="16" source="Lava_01.png"/>
+  </tile>
+  <tile id="12">
+   <image width="16" height="16" source="Ground_03.png"/>
+  </tile>
+  <tile id="13">
+   <image width="16" height="16" source="cement-block_02.png"/>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="40" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztmG1LxEAMhLdyBSue//+jP1ULDYzjJNn22nORDITqdss+Tl5abK1UKpVKpVKpVCqVSqVSqVQqlUqlUqlUKv0nTd9x22L6YxYWsp3J+HYg7tt1gmC2sxjXc95FGIcX6/2F+KJr9rdmfOra4HkVxud5hx56PvTw2R7kwnX2zfbt9W997qP9zgWe6/Hh+YrL48s8NH577g6M7KliZB6PN+LzGCe4h3zIqOq+h49rrYm1pfmME60r/z7oTMUY5dNbU/4xo8dnjNwf7KXqA+55z1N7fhLx2trnbbv28nHPIGM051TtMZ/y8CY8ZT4Mjw/nsOefqj/mQ/+QD9ej+Ye9ouZO9J6I6g/5rC8Wumbz2QvOWeafCuZT+c3eb1Hge1T1X09EfDyjVa16gX2W9V8WyMczGutwD9+6f24/a6cnIh9V7z6Tjzm84Pt7+YzNovcbidmW4Pzsfi9bD6N39kL3uQ738infJvp5T049vh5/vTpW3ikfo5zxOdmZHp93/pzcx29f5Zliy/IW8ak8Kj8xx4rvCFvGl/mV5VfxHZllPb70BvPtfT6Kly3QN1zrncdq7/r7USGHxSzW9vpzNZ8F82EPeHPvaj7lY9ajUX+cxaf6MvMv6o8r+Dwvvfp7Zn692ZbV39X+ZTWocpj5x/sfUQ9fNu+yPY/yeRG9R6Jcn+lfxN37vs1yfhVf5Cn3S+Tjs4Seqj692rM9fNF36Sh8Xn+PxDcPxNeaZhyFzcSMI7GZ1AwfTcg3mkb2z7jW//fhdQTG6L08AmPxPS6PcQQ2k/pWGE0jz79VV3+DfgF1LiRO
+  </data>
+ </layer>
+ <objectgroup name="Fire" visible="0"/>
+ <layer name="Tile Layer 2" width="40" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt10EKgzAURdGAA2fuf7mlMw0WI02aZzkHipDK703sxFIAAAAAAAAAeILl4jrCNnD2N866rlpbz2/Enrfq2mtest6NPef1fh6z1fv49b7u/l5636gZM2ZDL2vj2mzr7lNKVmNK176jXi8fvpulbklqTGo5k9739oS2GY3J59Ki9d10uXEvR+lnl9y2l9J51pH+jPkP/mMAAECLF6Y8Ad4=
+  </data>
+ </layer>
+</map>
