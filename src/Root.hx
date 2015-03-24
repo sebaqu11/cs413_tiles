@@ -25,7 +25,8 @@ class Root extends Sprite {
 
         assets = new AssetManager();
         assets.enqueue("assets/Sprites.png");
-        assets.enqueue("assets/Sprites.xml");	
+        assets.enqueue("assets/Sprites.xml");
+        //assets.enqueue("assets/GameMap.tmx");
 		
         assets.loadQueue(function onProgress(ratio:Float) {
             haxe.Log.clear();

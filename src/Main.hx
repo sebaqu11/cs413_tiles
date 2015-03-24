@@ -89,7 +89,7 @@ class Main extends Sprite {
 				game.start();
 				Starling.current.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 				transitionOut(function() {
-					Root.assets.removeSound("GrandpaTallTales");
+					//Root.assets.removeSound("GrandpaTallTales");
 					this.removeFromParent();
 					this.dispose();
 				});

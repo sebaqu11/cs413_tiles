@@ -31,7 +31,7 @@ class Game extends Sprite
 	var rootSprite:Sprite;
 
 	var bg:Image;
-
+	var map:Tilemap;
 	var transitionSpeed = 0.5;
 	
 	public function new(root:Sprite) {
@@ -51,8 +51,8 @@ class Game extends Sprite
 		addEventListener(Event.ENTER_FRAME, onEnterFrame);
 
 		//bg = new Image(Root.assets.getTexture("Background"));
-
-		rootSprite.addChild(this);
+		map = new Tilemap("map");
+		map.addChild(this);
 		
 	}
 	
