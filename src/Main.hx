@@ -17,6 +17,8 @@ import starling.utils.Color;
 import starling.events.KeyboardEvent;
 import Std;
 
+import Root;
+
 class Main extends Sprite {
 	
 	public var rootSprite:Sprite;
@@ -37,7 +39,7 @@ class Main extends Sprite {
 	}
 	
 	public function start() {
-		
+    TextField.getBitmapFont("Extrude_0").smoothing = "none";
 		this.pivotX = center.x;
 		this.pivotY = center.y;
 		this.x = center.x;
@@ -45,7 +47,7 @@ class Main extends Sprite {
 		this.scaleX = 8;
 		this.scaleY = 8;
 		//bg = new Image(Root.assets.getTexture("Intro"));
-		gametitle = new TextField(350, 50,"", "5x7");
+		gametitle = new TextField(350, 50,"", "Extrude_0");
 		gametitle.text = "";
 		gametitle.fontSize = 45;
 		gametitle.color = Color.WHITE;
@@ -56,7 +58,7 @@ class Main extends Sprite {
 		//this.addChild(gametitle);
 		rootSprite.addChild(this);
 
-		buttons = [new TextField(150, 50, "Begin Game", "5x7"), new TextField(150, 50, "Credits", "5x7")];
+		buttons = [new TextField(150, 50, "Begin Game", "Extrude_0"), new TextField(150, 50, "Credits", "Extrude_0")];
 		for (i in 0...buttons.length) {
 			var button = buttons[i];
 			button.fontSize = 24;
@@ -81,7 +83,7 @@ class Main extends Sprite {
 	
 	private function handleInput(event:KeyboardEvent){
 		
-		if (event.keyCode == Keyboard.SPACE) {
+		if (event.keyCode == Keyboard.SPACE || event.keyCode == Keyboard.ENTER) {
 			
 			if (selection == 0) {
 				// NewGame
@@ -100,7 +102,7 @@ class Main extends Sprite {
 				credits.start();
 				Starling.current.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 				transitionOut(function() {
-					Root.assets.removeSound("GrandpaTallTales");
+					//Root.assets.removeSound("GrandpaTallTales");
 					this.removeFromParent();
 					this.dispose();
 			});

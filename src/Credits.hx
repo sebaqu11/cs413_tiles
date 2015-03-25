@@ -23,7 +23,7 @@ class Credits extends Sprite {
 	public var bg:Image;
 	private var transitionSpeed = 0.5;
 	public var bgcolor = 255;
-	public var credits:TextField = new TextField(400, 500,"Credits", "5x7");
+	public var credits:TextField = new TextField(400, 500,"Credits", "Extrude_0");
 	public function new(rootSprite:Sprite) {
 		this.rootSprite = rootSprite;
 		super();
@@ -59,7 +59,7 @@ class Credits extends Sprite {
 	
 	private function handleInput(event:KeyboardEvent) {
 		
-		if (event.keyCode == Keyboard.SPACE) {
+		if (event.keyCode == Keyboard.SPACE || event.keyCode == Keyboard.ENTER) {
 		
 			// Return
 			var menu = new Main(rootSprite);
