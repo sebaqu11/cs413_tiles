@@ -31,7 +31,7 @@ class Main extends Sprite {
 	public var bgcolor = 255;
 	public var bg:Image;
 	public var gametitle:TextField;
-	public var center = new Vector3D(Starling.current.stage.stageWidth / 2.5, Starling.current.stage.stageHeight / 2.5);
+	public var center = new Vector3D(Starling.current.stage.stageWidth / 2, Starling.current.stage.stageHeight / 2);
 
 	public function new(rootSprite:Sprite) {
 		this.rootSprite = rootSprite;
@@ -39,7 +39,7 @@ class Main extends Sprite {
 	}
 	
 	public function start() {
-    TextField.getBitmapFont("Extrude_0").smoothing = "none";
+        TextField.getBitmapFont("gameBoy_0").smoothing = "none";
 		this.pivotX = center.x;
 		this.pivotY = center.y;
 		this.x = center.x;
@@ -58,12 +58,10 @@ class Main extends Sprite {
 		//this.addChild(gametitle);
 		rootSprite.addChild(this);
 
-		buttons = [new TextField(150, 50, "Begin Game", "Extrude_0"), new TextField(150, 50, "Credits", "Extrude_0")];
+		buttons = [new TextField(300, 50, "Begin Game", "gameBoy_0", 24, Color.WHITE), new TextField(300, 50, "Credits", "gameBoy_0", 24, Color.WHITE)];
 		for (i in 0...buttons.length) {
 			var button = buttons[i];
-			button.fontSize = 24;
-			button.color = Color.WHITE;
-			button.x = center.x - 25;
+			button.x = center.x - 150;
 			button.y = 110 + (i * 50);
 			this.addChild(button);
 		}

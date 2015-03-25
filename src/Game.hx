@@ -25,6 +25,9 @@ import haxe.Timer;
 
 import flash.ui.Keyboard;
 
+import Root;
+import Tilemap;
+
 class Game extends Sprite
 {
 	
@@ -51,7 +54,7 @@ class Game extends Sprite
 		addEventListener(Event.ENTER_FRAME, onEnterFrame);
 
 		//bg = new Image(Root.assets.getTexture("Background"));
-		map = new Tilemap("map");
+		map = new Tilemap(Root.assets, "GameMap");
 		map.addChild(this);
 		
 	}

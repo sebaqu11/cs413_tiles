@@ -23,7 +23,7 @@ class Credits extends Sprite {
 	public var bg:Image;
 	private var transitionSpeed = 0.5;
 	public var bgcolor = 255;
-	public var credits:TextField = new TextField(400, 500,"Credits", "Extrude_0");
+	public var credits:TextField = new TextField(400, 500,"Credits", "gameBoy_0", 30, Color.WHITE);
 	public function new(rootSprite:Sprite) {
 		this.rootSprite = rootSprite;
 		super();
@@ -42,8 +42,6 @@ class Credits extends Sprite {
 			//this.addChild(bg);
 			Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 
-			credits.fontSize = 30;
-			credits.color = Color.WHITE;
 			credits.x = center.x - 200;
 			credits.y = 400;
 			this.addChild(credits);
