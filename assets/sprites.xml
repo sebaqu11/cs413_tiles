@@ -1,0 +1,25 @@
+<TextureAtlas imagePath="sprites.png">
+	<SubTexture name="Ground_01.png" x="18" y="75" width="16" height="16"/>
+	<SubTexture name="Ground_02.png" x="0" y="75" width="16" height="16"/>
+	<SubTexture name="Ground_03.png" x="72" y="66" width="16" height="16"/>
+	<SubTexture name="Ground_04.png" x="108" y="54" width="16" height="16"/>
+	<SubTexture name="Lava_01.png" x="93" y="18" width="16" height="16"/>
+	<SubTexture name="Mud_01.png" x="93" y="36" width="16" height="16"/>
+	<SubTexture name="Player.png" x="93" y="54" width="10" height="10"/>
+	<SubTexture name="Wall_01.png" x="90" y="102" width="16" height="16"/>
+	<SubTexture name="Wall_02.png" x="90" y="84" width="16" height="16"/>
+	<SubTexture name="Wall_03.png" x="90" y="66" width="16" height="16"/>
+	<SubTexture name="Wall_04.png" x="72" y="102" width="16" height="16"/>
+	<SubTexture name="Wall_05.png" x="72" y="84" width="16" height="16"/>
+	<SubTexture name="Wall_06.png" x="93" y="0" width="16" height="16"/>
+	<SubTexture name="Water_01.png" x="54" y="93" width="16" height="16"/>
+	<SubTexture name="black-block.png" x="54" y="75" width="16" height="16"/>
+	<SubTexture name="cement-block.png" x="36" y="93" width="16" height="16"/>
+	<SubTexture name="cement-block_01.png" x="36" y="75" width="16" height="16"/>
+	<SubTexture name="cement-block_02.png" x="36" y="93" width="16" height="16"/>
+	<SubTexture name="finish.png" x="18" y="93" width="16" height="16"/>
+	<SubTexture name="flame.png" x="0" y="111" width="10" height="13"/>
+	<SubTexture name="grass-block.png" x="0" y="93" width="16" height="16"/>
+	<SubTexture name="gravekeeper.png" x="55" y="0" width="36" height="64"/>
+	<SubTexture name="skull-kid.png" x="0" y="0" width="53" height="73"/>
+</TextureAtlas>
