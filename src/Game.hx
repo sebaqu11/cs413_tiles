@@ -30,9 +30,7 @@ import Tilemap;
 
 class Game extends Sprite
 {
-	
 	var rootSprite:Sprite;
-
 	var bg:Image;
 	var map:Tilemap;
 	var transitionSpeed = 0.5;
@@ -54,7 +52,7 @@ class Game extends Sprite
 		addEventListener(Event.ENTER_FRAME, onEnterFrame);
 
 		//bg = new Image(Root.assets.getTexture("Background"));
-		map = new Tilemap(Root.assets, "GameMap");
+		map = new Tilemap(Root.assets, "map");
 		map.addChild(this);
 		
 	}
