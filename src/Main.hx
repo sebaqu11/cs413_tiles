@@ -16,7 +16,6 @@ import starling.text.BitmapFont;
 import starling.utils.Color;
 import starling.events.KeyboardEvent;
 import Std;
-
 import Root;
 
 class Main extends Sprite {

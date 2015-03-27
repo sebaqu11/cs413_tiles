@@ -25,34 +25,35 @@ class Root extends Sprite {
 
         assets = new AssetManager();
         // Sprite sheet and font
-        assets.enqueue("assets/sprites.png");
-        assets.enqueue("assets/sprites.xml");
-        assets.enqueue("assets/GameMap.tmx");
+        //assets.enqueue("assets/sprites.png");
+        //assets.enqueue("assets/sprites.xml");
+        //assets.enqueue("assets/GameMap.tmx");
         assets.enqueue("assets/font/gameBoy_0.png");
         assets.enqueue("assets/font/gameBoy.fnt");
         // Tiles
-        assets.enqueue("assets/old/black-block.png");
-        assets.enqueue("assets/old/cement-block.png");
-        assets.enqueue("assets/old/cement-block_01.png");
-        assets.enqueue("assets/old/cement-block_02.png");
-        assets.enqueue("assets/old/finish.png");
-        assets.enqueue("assets/old/flame.png");
-        assets.enqueue("assets/old/Ground_01.png");
-        assets.enqueue("assets/old/Ground_02.png");
-        assets.enqueue("assets/old/Ground_03.png");
-        assets.enqueue("assets/old/Ground_04.png");
-        assets.enqueue("assets/old/Lava_01.png");
-        assets.enqueue("assets/old/Mud_01.png");
-        assets.enqueue("assets/old/Player.png");
-        assets.enqueue("assets/old/Wall_01.png");
-        assets.enqueue("assets/old/Wall_02.png");
-        assets.enqueue("assets/old/Wall_03.png");
-        assets.enqueue("assets/old/Wall_04.png");
-        assets.enqueue("assets/old/Wall_05.png");
-        assets.enqueue("assets/old/Wall_06.png");
-        assets.enqueue("assets/old/Water_01.png");
+        assets.enqueue("assets/black-block.png");
+        assets.enqueue("assets/cement-block.png");
+        assets.enqueue("assets/cement-block_01.png");
+        assets.enqueue("assets/cement-block_02.png");
+        assets.enqueue("assets/finish.png");
+        assets.enqueue("assets/flame.png");
+        assets.enqueue("assets/Ground_01.png");
+        assets.enqueue("assets/Ground_02.png");
+        assets.enqueue("assets/Ground_03.png");
+        assets.enqueue("assets/Ground_04.png");
+        assets.enqueue("assets/Lava_01.png");
+        assets.enqueue("assets/Mud_01.png");
+        assets.enqueue("assets/Player.png");
+        assets.enqueue("assets/Wall_01.png");
+        assets.enqueue("assets/Wall_02.png");
+        assets.enqueue("assets/Wall_03.png");
+        assets.enqueue("assets/Wall_04.png");
+        assets.enqueue("assets/Wall_05.png");
+        assets.enqueue("assets/Wall_06.png");
+        assets.enqueue("assets/Water_01.png");
 
-		
+
+
         assets.loadQueue(function onProgress(ratio:Float) {
             haxe.Log.clear();
             if (ratio == 1) {

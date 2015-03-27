@@ -16,30 +16,23 @@ import starling.textures.TextureAtlas;
 import flash.media.SoundTransform;
 import flash.media.SoundChannel;
 import flash.media.Sound;
-
 import haxe.io.Bytes;
 import haxe.io.BytesInput;
 import haxe.io.Eof;
-
 import haxe.Timer;
-
 import flash.ui.Keyboard;
-
 import Root;
 import Tilemap;
 
 class Game extends Sprite
 {
 	var rootSprite:Sprite;
-	var bg:Image;
 	var map:Tilemap;
 	var transitionSpeed = 0.5;
-	
+
 	public function new(root:Sprite) {
 		super();
 		this.rootSprite = root;
-		
-	
 	}
 	
 	public function start() {
@@ -51,10 +44,8 @@ class Game extends Sprite
 		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 		addEventListener(Event.ENTER_FRAME, onEnterFrame);
 
-		//bg = new Image(Root.assets.getTexture("Background"));
 		map = new Tilemap(Root.assets, "map");
-		map.addChild(this);
-		
+		this.addChild(map);
 	}
 	
 	public function cleanup() {
