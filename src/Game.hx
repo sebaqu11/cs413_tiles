@@ -61,6 +61,7 @@ class Game extends Sprite
 	function onKeyDown(event:KeyboardEvent) {
 		if (event.keyCode == Keyboard.UP) {
 			map.y += 160;
+
 		}
 		else if (event.keyCode == Keyboard.DOWN) {
 			map.y -= 160;
