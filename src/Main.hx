@@ -46,12 +46,12 @@ class Main extends Sprite {
 		this.scaleX = 8;
 		this.scaleY = 8;
 		//bg = new Image(Root.assets.getTexture("Intro"));
-		gametitle = new TextField(350, 50,"", "Extrude_0");
-		gametitle.text = "";
-		gametitle.fontSize = 45;
-		gametitle.color = Color.WHITE;
-		gametitle.x = center.x - 125;
-		gametitle.y = 50;
+		//gametitle = new TextField(350, 50,"", "Extrude_0");
+		//gametitle.text = "";
+		//gametitle.fontSize = 45;
+		//gametitle.color = Color.WHITE;
+		//gametitle.x = center.x - 125;
+		//gametitle.y = 50;
 		//TextField.getBitmapFont("5x7").smoothing = "none";
 		//this.addChild(bg);
 		//this.addChild(gametitle);
