@@ -27,7 +27,7 @@ class Root extends Sprite {
         // Sprite sheet and font
         //assets.enqueue("assets/sprites.png");
         //assets.enqueue("assets/sprites.xml");
-        //assets.enqueue("assets/GameMap.tmx");
+        assets.enqueue("assets/GameMap.tmx");
         assets.enqueue("assets/font/gameBoy_0.png");
         assets.enqueue("assets/font/gameBoy.fnt");
         // Tiles

@@ -1,5 +1,6 @@
 import starling.display.Sprite;
 import starling.display.Image;
+import flash.geom.Point;
 import starling.core.Starling;
 import starling.text.TextField;
 import starling.events.KeyboardEvent;
@@ -45,6 +46,8 @@ class Game extends Sprite
 		addEventListener(Event.ENTER_FRAME, onEnterFrame);
 
 		map = new Tilemap(Root.assets, "map");
+		map.x = -192;
+		map.y = -1680;
 		stage.addChild(map);
 	}
 	
@@ -56,8 +59,18 @@ class Game extends Sprite
 	}
 	
 	function onKeyDown(event:KeyboardEvent) {
-
-
+		if (event.keyCode == Keyboard.UP) {
+			map.y += 160;
+		}
+		else if (event.keyCode == Keyboard.DOWN) {
+			map.y -= 160;
+		}
+		else if (event.keyCode == Keyboard.LEFT) {
+			map.x += 160;
+		}
+		else if (event.keyCode == Keyboard.RIGHT) {
+			map.x -= 160;
+		}
 	}
 	
 	function onEnterFrame(event:EnterFrameEvent) {
