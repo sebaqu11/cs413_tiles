@@ -18,7 +18,7 @@ enum RenderOrder {
   LeftUp;
 }
 
-private class Tile {
+class Tile {
   public var id:Int;
   public var width:Int;
   public var height:Int;
@@ -29,7 +29,7 @@ private class Tile {
   }
 }
 
-private class Layer {
+class Layer {
   public var name:String;
   public var data:Array<Array<Tile>>;
   public var visible:Bool;
@@ -48,9 +48,9 @@ class Tilemap extends Sprite {
   public var tileHeight(default, null):Int;
   public var orientation(default, null):Orientation;
   public var renderOrder(default, null):RenderOrder;
-  private var _tiles:Array<Tile>;
+  public var tiles:Array<Tile>;
   public var layers:Array<Layer>;
-  private var _assets:AssetManager;
+  public var _assets:AssetManager;
 
   public function new(assets:AssetManager, xml:String) {
     super();
@@ -93,7 +93,7 @@ class Tilemap extends Sprite {
     tileWidth = Std.parseInt(source.att.tilewidth);
     tileHeight = Std.parseInt(source.att.tileheight);
 
-    _tiles = new Array<Tile>();
+    tiles = new Array<Tile>();
     for (tileset in source.nodes.tileset) {
       if (tileset.has.source) {
         throw "External tileset source not supported.";
@@ -112,7 +112,7 @@ class Tilemap extends Sprite {
             t.source = image.att.source;
             t.source = t.source.substr(0, t.source.length-4);
           }
-          _tiles.push(t);
+          tiles.push(t);
         }
       }
     }
@@ -130,15 +130,16 @@ class Tilemap extends Sprite {
       var i = 0;
       for (data in layer.nodes.data) {
         for (tile in data.nodes.tile) {
-          t.data[Std.int(i / mapWidth)][Std.int(i % mapWidth)] = _tiles[Std.parseInt(tile.att.gid)-1];
+          t.data[Std.int(i / mapWidth)][Std.int(i % mapWidth)] = tiles[Std.parseInt(tile.att.gid)-1];
           i += 1;
         }
       }
       layers.push(t);
     }
 
-
+	//var i:Int = 0;
     for (layer in layers) {
+	//if (i == 2) {
 
       // The default is renderOrder == RenderOrder.RightDown
       var xi = 0;
@@ -193,6 +194,8 @@ class Tilemap extends Sprite {
         _x = xi;
         _y += dy;
       }
+	//}
+	//i += 1;
     }
 
   }

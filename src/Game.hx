@@ -47,8 +47,8 @@ class Game extends Sprite
 		addEventListener(Event.ENTER_FRAME, onEnterFrame);
 
 		map = new Tilemap(Root.assets, "map");
-		map.pivotX = 16 * 22;
-		map.pivotY = 16 * 115;
+		map.x = -16 * 22;
+		map.y = -16 * 115;
 		stage.addChild(map);
 		player = new Image(Root.assets.getTexture("Player"));
 		player.smoothing = "none";
@@ -66,20 +66,32 @@ class Game extends Sprite
 	
 	function onKeyDown(event:KeyboardEvent) {
 		if (event.keyCode == Keyboard.UP) {
-			map.y += 16;
-			Root.assets.playSound("MoveNoise1");
+			if (map.layers[2].data[-Math.round(map.y / 16) + 5][-Math.round(map.x / 16) + 5] == null) {
+				map.y += 16;
+				Root.assets.playSound("MoveNoise1");
+			}
+			else Root.assets.playSound("CollisionSound1");
 		}
 		else if (event.keyCode == Keyboard.DOWN) {
-			map.y -= 16;
-			Root.assets.playSound("MoveNoise1");
+			if (map.layers[2].data[-Math.round(map.y / 16) + 7][-Math.round(map.x / 16) + 5] == null) {
+				map.y -= 16;
+				Root.assets.playSound("MoveNoise1");
+			}
+			else Root.assets.playSound("CollisionSound1");
 		}
 		else if (event.keyCode == Keyboard.LEFT) {
-			map.x += 16;
-			Root.assets.playSound("MoveNoise1");
+			if (map.layers[2].data[-Math.round(map.y / 16) + 6][-Math.round(map.x / 16) + 4] == null) {
+				map.x += 16;
+				Root.assets.playSound("MoveNoise1");
+			}
+			else Root.assets.playSound("CollisionSound1");
 		}
 		else if (event.keyCode == Keyboard.RIGHT) {
-			map.x -= 16;
-			Root.assets.playSound("MoveNoise1");
+			if (map.layers[2].data[-Math.round(map.y / 16) + 6][-Math.round(map.x / 16) + 6] == null) {
+				map.x -= 16;
+				Root.assets.playSound("MoveNoise1");
+			}
+			else Root.assets.playSound("CollisionSound1");
 		}
 	}
 	
