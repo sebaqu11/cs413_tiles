@@ -182,7 +182,6 @@ class Tilemap extends Sprite {
           var cell = layer.data[_y][_x];
           if (cell != null && cell.source != null && cell.source != "") {
             var img = new Image(_assets.getTexture(cell.source));
-			img.smoothing = "none";
             img.pivotY = img.height;
             img.x = _x*tileWidth;
             img.y = _y*tileHeight + 32;
