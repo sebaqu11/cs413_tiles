@@ -49,7 +49,7 @@ class Tilemap extends Sprite {
   public var orientation(default, null):Orientation;
   public var renderOrder(default, null):RenderOrder;
   private var _tiles:Array<Tile>;
-  private var _layers:Array<Layer>;
+  public var layers:Array<Layer>;
   private var _assets:AssetManager;
 
   public function new(assets:AssetManager, xml:String) {
@@ -117,7 +117,7 @@ class Tilemap extends Sprite {
       }
     }
 
-    _layers = new Array<Layer>();
+    layers = new Array<Layer>();
     for (layer in source.nodes.layer) {
       var t = new Layer();
       t.name = layer.att.name;
@@ -134,11 +134,11 @@ class Tilemap extends Sprite {
           i += 1;
         }
       }
-      _layers.push(t);
+      layers.push(t);
     }
 
 
-    for (layer in _layers) {
+    for (layer in layers) {
 
       // The default is renderOrder == RenderOrder.RightDown
       var xi = 0;
