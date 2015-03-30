@@ -62,16 +62,16 @@ class Main extends Sprite {
 		gametitle.y = 32;
 		this.addChild(gametitle);
 		*/
-		buttons = [new TextField(100, 50, "Begin Game", "gameBoy_0", 10, Color.WHITE), new TextField(100, 50, "Credits", "gameBoy_0", 10, Color.WHITE)];
+		buttons = [new TextField(150, 50, "Begin Game", "gameBoy_0", 12, Color.WHITE), new TextField(150, 50, "Credits", "gameBoy_0", 12, Color.WHITE)];
 		for (i in 0...buttons.length) {
 			var button = buttons[i];
-			button.x = center.x - 50;
+			button.x = center.x - 75;
 			button.y = 32 + (i * 32);
 			this.addChild(button);
 		}
 
 		//Enlarge the first highlighted option by default
-		buttons[0].fontSize = 12;
+		buttons[0].fontSize = 18;
 		
 		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 		
@@ -117,13 +117,13 @@ class Main extends Sprite {
 			if (event.keyCode == Keyboard.UP) {
 				
 				tween = new Tween(this.buttons[selection], rotateSpeed, Transitions.EASE_IN_OUT);
-				tween.animate("fontSize", 10);
+				tween.animate("fontSize", 12);
 				Starling.juggler.add(tween);
 
 				selection = arithMod(--selection, buttons.length);
 
 				tween = new Tween(this.buttons[selection], rotateSpeed, Transitions.EASE_IN_OUT);
-				tween.animate("fontSize", 12);
+				tween.animate("fontSize", 18);
 				Starling.juggler.add(tween);
 			}
 			else if (event.keyCode == Keyboard.DOWN) {
@@ -132,13 +132,13 @@ class Main extends Sprite {
 				*/
 				
 				tween = new Tween(this.buttons[selection], rotateSpeed, Transitions.EASE_IN_OUT);
-				tween.animate("fontSize", 10);
+				tween.animate("fontSize", 12);
 				Starling.juggler.add(tween);
 
 				selection = arithMod(++selection, buttons.length);
 
 				tween = new Tween(this.buttons[selection], rotateSpeed, Transitions.EASE_IN_OUT);
-				tween.animate("fontSize", 12);
+				tween.animate("fontSize", 18);
 				Starling.juggler.add(tween);
 			}
 		}
