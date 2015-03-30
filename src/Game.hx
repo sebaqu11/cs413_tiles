@@ -47,8 +47,8 @@ class Game extends Sprite
 		addEventListener(Event.ENTER_FRAME, onEnterFrame);
 
 		map = new Tilemap(Root.assets, "map");
-		map.x = -16 * 12;
-		map.y = -16 * 105;
+		map.x = -16 * 22;
+		map.y = -16 * 115;
 		stage.addChild(map);
 		player = new Image(Root.assets.getTexture("Player"));
 		player.smoothing = "none";
