@@ -30,6 +30,7 @@ class Game extends Sprite
 	var rootSprite:Sprite;
 	var map:Tilemap;
 	var transitionSpeed = 0.5;
+	var player:Image;
 
 	public function new(root:Sprite) {
 		super();
@@ -46,9 +47,14 @@ class Game extends Sprite
 		addEventListener(Event.ENTER_FRAME, onEnterFrame);
 
 		map = new Tilemap(Root.assets, "map");
-		map.x = -192;
-		map.y = -1680;
+		map.x = -16 * 12;
+		map.y = -16 * 105;
 		stage.addChild(map);
+		player = new Image(Root.assets.getTexture("Player"));
+		player.smoothing = "none";
+		player.x = 16 * 5;
+		player.y = 16 * 7;
+		stage.addChild(player);
 	}
 	
 	public function cleanup() {
@@ -60,16 +66,16 @@ class Game extends Sprite
 	
 	function onKeyDown(event:KeyboardEvent) {
 		if (event.keyCode == Keyboard.UP) {
-			map.y += 160;
+			map.y += 16;
 		}
 		else if (event.keyCode == Keyboard.DOWN) {
-			map.y -= 160;
+			map.y -= 16;
 		}
 		else if (event.keyCode == Keyboard.LEFT) {
-			map.x += 160;
+			map.x += 16;
 		}
 		else if (event.keyCode == Keyboard.RIGHT) {
-			map.x -= 160;
+			map.x -= 16;
 		}
 	}
 	
