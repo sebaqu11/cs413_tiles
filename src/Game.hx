@@ -67,15 +67,19 @@ class Game extends Sprite
 	function onKeyDown(event:KeyboardEvent) {
 		if (event.keyCode == Keyboard.UP) {
 			map.y += 16;
+			Root.assets.playSound("MoveNoise1");
 		}
 		else if (event.keyCode == Keyboard.DOWN) {
 			map.y -= 16;
+			Root.assets.playSound("MoveNoise1");
 		}
 		else if (event.keyCode == Keyboard.LEFT) {
 			map.x += 16;
+			Root.assets.playSound("MoveNoise1");
 		}
 		else if (event.keyCode == Keyboard.RIGHT) {
 			map.x -= 16;
+			Root.assets.playSound("MoveNoise1");
 		}
 	}
 	
