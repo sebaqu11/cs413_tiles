@@ -138,6 +138,7 @@ class Tilemap extends Sprite {
     }
 
 
+
     for (layer in _layers) {
 
       // The default is renderOrder == RenderOrder.RightDown
