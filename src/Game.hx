@@ -25,6 +25,8 @@ import haxe.Timer;
 import flash.ui.Keyboard;
 import Root;
 import Tilemap;
+import StopWatch;
+import haxe.Timer;
 
 class Game extends Sprite
 {
@@ -42,7 +44,7 @@ class Game extends Sprite
 	var water:Int = 5;
 	var mud:Int = 6;
 	var finish:Int = 7;
-	var scoreText:TextField = null;
+	var timerText:TextField = null;
 	var elapsedTime:Float;
 
 	public function new(root:Sprite) {
@@ -55,6 +57,9 @@ class Game extends Sprite
 		var stage = Starling.current.stage;
 		var stageWidth:Float = Starling.current.stage.stageWidth;
 		var stageHeight:Float = Starling.current.stage.stageHeight;
+
+		var s:StopWatch = new StopWatch("Time: ");
+		trace(s.get_seconds());
 
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 		addEventListener(Event.ENTER_FRAME, onEnterFrame);
@@ -70,13 +75,12 @@ class Game extends Sprite
 		stage.addChild(player);
 
 		// create timer in top left corner
-		scoreText = new TextField(100,25, "0");
-		scoreText.fontSize = 12;
-		scoreText.color = 0xFFFFFF;
-		scoreText.hAlign = "left";
-		scoreText.x = 5;
-		stage.addChild(scoreText);
-
+		timerText = new TextField(100,25, s.toString());
+		timerText.fontSize = 10;
+		timerText.color = 0xFFFFFF;
+		timerText.hAlign = "left";
+		timerText.x = 5;
+		stage.addChild(timerText);
 
 	}
 	
