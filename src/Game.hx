@@ -115,10 +115,12 @@ class Game extends Sprite
                                 cleanup();
                             }
                         } else {
+                            Starling.current.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
                             Timer.delay(function() {
                                 map.x -= changeX * 16;
                                 map.y -= changeY * 16;
                                 Root.assets.playSound("MudMoveSound1");
+                                Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
                             }, 500);
                         }
                     } else {
