@@ -42,6 +42,8 @@ class Game extends Sprite
 	var water:Int = 5;
 	var mud:Int = 6;
 	var finish:Int = 7;
+	var scoreText:TextField = null;
+	var elapsedTime:Float;
 
 	public function new(root:Sprite) {
 		super();
@@ -53,7 +55,7 @@ class Game extends Sprite
 		var stage = Starling.current.stage;
 		var stageWidth:Float = Starling.current.stage.stageWidth;
 		var stageHeight:Float = Starling.current.stage.stageHeight;
-		
+
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 		addEventListener(Event.ENTER_FRAME, onEnterFrame);
 
@@ -66,6 +68,16 @@ class Game extends Sprite
 		player.x = 16 * 5;
 		player.y = 16 * 7;
 		stage.addChild(player);
+
+		// create timer in top left corner
+		scoreText = new TextField(100,25, "0");
+		scoreText.fontSize = 12;
+		scoreText.color = 0xFFFFFF;
+		scoreText.hAlign = "left";
+		scoreText.x = 5;
+		stage.addChild(scoreText);
+
+
 	}
 	
 	public function cleanup() {
