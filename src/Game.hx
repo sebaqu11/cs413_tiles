@@ -1,7 +1,4 @@
-import starling.display.Sprite;
-import starling.display.Image;
 import starling.utils.Color;
-import flash.geom.Point;
 import starling.core.Starling;
 import starling.text.TextField;
 import starling.events.KeyboardEvent;
@@ -11,18 +8,24 @@ import starling.filters.BlurFilter;
 import starling.filters.SelectorFilter;
 import starling.animation.Transitions;
 import starling.animation.Tween;
+import starling.display.Quad;
 import starling.display.MovieClip;
+import starling.display.Sprite;
+import starling.display.Image;
+import starling.display.Stage;
 import starling.animation.Juggler;
 import starling.textures.Texture;
 import starling.textures.TextureAtlas;
 import flash.media.SoundTransform;
 import flash.media.SoundChannel;
 import flash.media.Sound;
+import flash.geom.Point;
+import flash.ui.Keyboard;
+import flash.system.System;
 import haxe.io.Bytes;
 import haxe.io.BytesInput;
 import haxe.io.Eof;
 import haxe.Timer;
-import flash.ui.Keyboard;
 import Root;
 import Tilemap;
 import StopWatch;
@@ -50,6 +53,7 @@ class Game extends Sprite
 	var timeDisp:String;
 	var running = true;
 	var steps = 0;
+	var sTime:Float;
 
 	public function new(root:Sprite) {
 		super();
@@ -57,10 +61,13 @@ class Game extends Sprite
 	}
 	
 	public function start() {
-		
+
 		var stage = Starling.current.stage;
-		var stageWidth:Float = Starling.current.stage.stageWidth;
-		var stageHeight:Float = Starling.current.stage.stageHeight;
+		var stageWidth = Starling.current.stage.stageWidth;
+		var stageHeight = Starling.current.stage.stageHeight;
+		sTime = flash.Lib.getTimer()/1000;
+		haxe.Log.clear();
+		steps = 0;
 
 		stopwatch = new StopWatch("Steps: ");
 
@@ -93,12 +100,11 @@ class Game extends Sprite
 	}
 	
 	public function cleanup() {
-		// stopwatch.stop();
-		// running = false;
 		Starling.current.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 		removeEventListener(Event.ENTER_FRAME, onEnterFrame);
 		this.removeFromParent;
 		this.dispose;
+		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, spaceRestart);
 	}
 	
 	function onKeyDown(event:KeyboardEvent) {
@@ -106,24 +112,30 @@ class Game extends Sprite
 		if (event.keyCode == Keyboard.UP) {
 			changeX = 0;
 			changeY = -1;
+		    steps += 1;
 		}
 		else if (event.keyCode == Keyboard.DOWN) {
 			changeX = 0;
 			changeY = 1;
+		    steps += 1;
 		}
 		else if (event.keyCode == Keyboard.LEFT) {
 			changeX = -1;
 			changeY = 0;
+		    steps += 1;
 		}
 		else if (event.keyCode == Keyboard.RIGHT) {
 			changeX = 1;
 			changeY = 0;
+		    steps += 1;
 		}
+		else if (event.keyCode == 32){
+			restartGame();
+		}	
 		else {
 			changeX = 0;
 			changeY = 0;
 		}
-		steps += 1;
 		timerText.text = '' + steps;
 
 		tileX = -Math.round(map.x / 16) + 5 + changeX;
@@ -141,8 +153,8 @@ class Game extends Sprite
                                 map.x -= changeX * 16;
                                 map.y -= changeY * 16;
                                 Root.assets.playSound("MoveNoise1");
-                                trace("You Win!");
-                                running = false;
+                                //win
+                                endGame(0);
                                 cleanup();
                             }
                         } else {
@@ -165,7 +177,7 @@ class Game extends Sprite
                         Starling.current.stage.removeChild(player);
                         Starling.current.stage.addChild(deathWater);
                         // lose
-                        trace("You Drowned!");
+                        endGame(1);
                         cleanup();
                     }
 				} else {
@@ -179,7 +191,7 @@ class Game extends Sprite
                     Starling.current.stage.removeChild(player);
                     Starling.current.stage.addChild(deathLava);
                     // lose
-                    trace("You Melted!");
+                    endGame(2);
                     cleanup();
 				}
 			} else {
@@ -210,7 +222,50 @@ class Game extends Sprite
 	function onEnterFrame(event:EnterFrameEvent) {
 		
 	}
-			
+
+	private function endGame(death:Int){	
+
+		var color = 0xFFFFFF;
+		var phrase = null;
+
+		if (death == 0){
+			phrase = 'You Win!';
+			color = 0x000000;
+		}
+		else if (death == 1){
+			phrase = 'You Drown..';
+			color = 0x3399FF;
+		}
+		else if (death == 2){
+			phrase = 'You Melted..';
+			color = 0x990000;
+		}
+
+		var finalSplash = new Quad(Starling.current.stage.stageWidth, Starling.current.stage.stageHeight, 0, true);	
+		finalSplash.alpha = 0.7;
+		finalSplash.color = color;
+		Starling.current.stage.addChild(finalSplash);
+		
+		var timeTemp = Std.int((flash.Lib.getTimer()/1000 - sTime)*1000)/1000;
+		var time = Std.int(timeTemp);
+		var menuText = new TextField(Starling.current.stage.stageWidth, Starling.current.stage.stageHeight, phrase + "\nTime:" + time + "s  Steps: " + steps + "\n Press <space> to restart");
+		menuText.fontSize = 18;
+		menuText.color = 0xFFFFFF;
+		Starling.current.stage.addChild(menuText);
+
+	}
+
+	private function spaceRestart(event:KeyboardEvent) {
+		if(event.keyCode == 32){
+			restartGame();
+		}
+	}
+
+	private function restartGame(){
+		this.removeChildren();
+			this.removeEventListeners();
+			start();
+	}
 	
 	private function transitionOut(?callBack:Void->Void) {
 

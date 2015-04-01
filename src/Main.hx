@@ -45,7 +45,7 @@ class Main extends Sprite {
 		this.y = center.y;
 		this.scaleX = 8;
 		this.scaleY = 8;
-		Root.assets.playSound("song1", 0, 9999);
+		// Root.assets.playSound("song1", 0, 9999);
 		//bg = new Image(Root.assets.getTexture("Intro"));
 		//gametitle = new TextField(350, 50,"", "Extrude_0");
 		//gametitle.text = "";
