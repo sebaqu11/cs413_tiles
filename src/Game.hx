@@ -48,6 +48,7 @@ class Game extends Sprite
 	var mud:Int = 6;
 	var finish:Int = 7;
 	var timerText:TextField = null;
+	var stepText:TextField;
 	var stopwatch:StopWatch;
 	var timeInt:Int = 0;
 	var timeDisp:String;
@@ -61,7 +62,6 @@ class Game extends Sprite
 	}
 	
 	public function start() {
-
 		var stage = Starling.current.stage;
 		var stageWidth = Starling.current.stage.stageWidth;
 		var stageHeight = Starling.current.stage.stageHeight;
@@ -72,7 +72,7 @@ class Game extends Sprite
 		stopwatch = new StopWatch("Steps: ");
 
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
-		addEventListener(Event.ENTER_FRAME, onEnterFrame);
+		stage.addEventListener(Event.ENTER_FRAME, onEnterFrame);
 
 		map = new Tilemap(Root.assets, "map");
 		map.x = -16 * 22;
@@ -86,13 +86,20 @@ class Game extends Sprite
 		stage.addChild(player);
 
 		// create timer in top left corner
-		timerText = new TextField(100,25, "0");
+		stepText = new TextField(100,25, "0", "gameBoy_0");
+		stepText.fontSize = 10;
+		stepText.color = 0xFFFFFF;
+		stepText.hAlign = "left";
+		stepText.x = 5;
+		stage.addChild(stepText);
+		
+		timerText = new TextField(100,25, "0", "gameBoy_0");
 		timerText.fontSize = 10;
 		timerText.color = 0xFFFFFF;
-		timerText.hAlign = "left";
-		timerText.x = 5;
+		timerText.hAlign = "right";
+		timerText.x = 75;
 		stage.addChild(timerText);
-
+		
 	}
 	
 	public function cleanup() {
@@ -133,7 +140,10 @@ class Game extends Sprite
 			changeX = 0;
 			changeY = 0;
 		}
-		timerText.text = '' + steps;
+		
+		stepText.text = '' + steps;
+
+
 
 		tileX = -Math.round(map.x / 16) + 5 + changeX;
 		tileY = -Math.round(map.y / 16) + 6 + changeY;
@@ -230,6 +240,7 @@ class Game extends Sprite
 	}
 	
 	function onEnterFrame(event:EnterFrameEvent) {
+		timerText.text = '' + Std.int((flash.Lib.getTimer()/1000 - sTime)*1000)/1000;
 		
 	}
 
@@ -274,8 +285,9 @@ class Game extends Sprite
 
 	private function restartGame(){
 		this.removeChildren();
-			this.removeEventListeners();
-			start();
+		this.removeEventListeners();
+		this.dispose();
+		start();
 	}
 	
 	private function transitionOut(?callBack:Void->Void) {
