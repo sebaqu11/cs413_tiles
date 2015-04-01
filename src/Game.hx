@@ -45,7 +45,11 @@ class Game extends Sprite
 	var mud:Int = 6;
 	var finish:Int = 7;
 	var timerText:TextField = null;
-	var elapsedTime:Float;
+	var stopwatch:StopWatch;
+	var timeInt:Int = 0;
+	var timeDisp:String;
+	var running = true;
+	var steps = 0;
 
 	public function new(root:Sprite) {
 		super();
@@ -58,8 +62,7 @@ class Game extends Sprite
 		var stageWidth:Float = Starling.current.stage.stageWidth;
 		var stageHeight:Float = Starling.current.stage.stageHeight;
 
-		var s:StopWatch = new StopWatch("Time: ");
-		trace(s.get_seconds());
+		stopwatch = new StopWatch("Steps: ");
 
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 		addEventListener(Event.ENTER_FRAME, onEnterFrame);
@@ -68,6 +71,7 @@ class Game extends Sprite
 		map.x = -16 * 22;
 		map.y = -16 * 115;
 		stage.addChild(map);
+
 		player = new Image(Root.assets.getTexture("Player"));
 		player.smoothing = "none";
 		player.x = 16 * 5;
@@ -75,16 +79,22 @@ class Game extends Sprite
 		stage.addChild(player);
 
 		// create timer in top left corner
-		timerText = new TextField(100,25, s.toString());
+		timerText = new TextField(100,25, "0");
 		timerText.fontSize = 10;
 		timerText.color = 0xFFFFFF;
 		timerText.hAlign = "left";
 		timerText.x = 5;
 		stage.addChild(timerText);
 
+		// timeInt = Std.int(Math.round(stopwatch.getStamp()));
+		// timeDisp = Std.string(timeInt);
+		// timerText.text = '' + timeDisp;
+
 	}
 	
 	public function cleanup() {
+		// stopwatch.stop();
+		// running = false;
 		Starling.current.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 		removeEventListener(Event.ENTER_FRAME, onEnterFrame);
 		this.removeFromParent;
@@ -92,6 +102,7 @@ class Game extends Sprite
 	}
 	
 	function onKeyDown(event:KeyboardEvent) {
+
 		if (event.keyCode == Keyboard.UP) {
 			changeX = 0;
 			changeY = -1;
@@ -112,6 +123,9 @@ class Game extends Sprite
 			changeX = 0;
 			changeY = 0;
 		}
+		steps += 1;
+		timerText.text = '' + steps;
+
 		tileX = -Math.round(map.x / 16) + 5 + changeX;
 		tileY = -Math.round(map.y / 16) + 6 + changeY;
 		if (map.layers[wall].data[tileY][tileX] == null) {
@@ -128,6 +142,7 @@ class Game extends Sprite
                                 map.y -= changeY * 16;
                                 Root.assets.playSound("MoveNoise1");
                                 trace("You Win!");
+                                running = false;
                                 cleanup();
                             }
                         } else {

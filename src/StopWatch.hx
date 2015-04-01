@@ -28,7 +28,7 @@ class StopWatch{
         return ms/1000;
     }
     
-    private inline function getStamp():Float{
+    public inline function getStamp():Float{
         var s:Float = Timer.stamp() - lastStamp;
         lastStamp = Timer.stamp();
         return s;
