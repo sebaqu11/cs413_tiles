@@ -93,10 +93,6 @@ class Game extends Sprite
 		timerText.x = 5;
 		stage.addChild(timerText);
 
-		// timeInt = Std.int(Math.round(stopwatch.getStamp()));
-		// timeDisp = Std.string(timeInt);
-		// timerText.text = '' + timeDisp;
-
 	}
 	
 	public function cleanup() {
@@ -104,6 +100,7 @@ class Game extends Sprite
 		removeEventListener(Event.ENTER_FRAME, onEnterFrame);
 		this.removeFromParent;
 		this.dispose;
+		// after removing everything, listen for the space bar again for restarting the game
 		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, spaceRestart);
 	}
 	
@@ -176,7 +173,7 @@ class Game extends Sprite
                         deathWater.y = 16 * 7;
                         Starling.current.stage.removeChild(player);
                         Starling.current.stage.addChild(deathWater);
-                        // lose
+                        // lose with drown
                         endGame(1);
                         cleanup();
                     }
@@ -190,19 +187,32 @@ class Game extends Sprite
                     deathLava.y = 16 * 7;
                     Starling.current.stage.removeChild(player);
                     Starling.current.stage.addChild(deathLava);
-                    // lose
+                    // lose with melt
                     endGame(2);
                     cleanup();
 				}
 			} else {
+				//user runs into fire on the ground
 				Starling.current.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 				map.x -= changeX * 16;
 				map.y -= changeY * 16;
 				Root.assets.playSound("FireSound1");
-                trace("You Burned!");
+
+				// Flash red when they run into fire
+             	var finalSplash = new Quad(Starling.current.stage.stageWidth, Starling.current.stage.stageHeight, 0, true);	
+				finalSplash.alpha = 0.5;
+				finalSplash.color = 0x990000;
+				Starling.current.stage.addChild(finalSplash);
+				var menuText = new TextField(Starling.current.stage.stageWidth, Starling.current.stage.stageHeight, "OW!! It burns!");
+				menuText.fontSize = 24;
+				menuText.color = 0xFFFFFF;
+				Starling.current.stage.addChild(menuText);
+
 				player.color = Color.RED;
 				Timer.delay(function() {
 					player.color = Color.WHITE; 
+					Starling.current.stage.removeChild(finalSplash);
+					Starling.current.stage.removeChild(menuText);
 					Timer.delay(function() {
 						player.color = Color.RED;
 						Timer.delay(function() {
@@ -225,6 +235,7 @@ class Game extends Sprite
 
 	private function endGame(death:Int){	
 
+		// Depending on the type of death/win, change the game over screen
 		var color = 0xFFFFFF;
 		var phrase = null;
 
