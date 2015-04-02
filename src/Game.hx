@@ -159,7 +159,7 @@ class Game extends Sprite
                             } else {
                                 map.x -= changeX * 16;
                                 map.y -= changeY * 16;
-                                Root.assets.playSound("MoveNoise1");
+                                Root.assets.playSound("FinishSound1");
                                 //win
                                 endGame(0);
                                 cleanup();
@@ -251,6 +251,7 @@ class Game extends Sprite
 		var phrase = null;
 
 		if (death == 0){
+			phrase = 'You Win!';
 			phrase = 'You Win!';
 			color = 0x000000;
 		}

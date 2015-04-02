@@ -61,7 +61,7 @@ class Root extends Sprite {
 		assets.enqueue("assets/sounds/MoveNoise1.mp3");
 		assets.enqueue("assets/sounds/MudMoveSound1.mp3");
 		assets.enqueue("assets/sounds/song1.mp3");
-
+		assets.enqueue("assets/sounds/FinishSound1.mp3");
 
 
         assets.loadQueue(function onProgress(ratio:Float) {
