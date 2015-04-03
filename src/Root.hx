@@ -52,6 +52,7 @@ class Root extends Sprite {
         assets.enqueue("assets/Wall_06.png");
         assets.enqueue("assets/Water_01.png");
         assets.enqueue("assets/Bubble_01.png");
+		assets.enqueue("assets/startImage.png");
 		
 		//Sounds
 		assets.enqueue("assets/sounds/CollisionSound1.mp3");

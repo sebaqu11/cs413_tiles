@@ -45,8 +45,8 @@ class Main extends Sprite {
 		this.y = center.y;
 		this.scaleX = 8;
 		this.scaleY = 8;
-		// Root.assets.playSound("song1", 0, 9999);
-		//bg = new Image(Root.assets.getTexture("Intro"));
+		Root.assets.playSound("song1", 0, 9999);
+		bg = new Image(Root.assets.getTexture("startImage"));
 		//gametitle = new TextField(350, 50,"", "Extrude_0");
 		//gametitle.text = "";
 		//gametitle.fontSize = 45;
@@ -54,15 +54,17 @@ class Main extends Sprite {
 		//gametitle.x = center.x - 125;
 		//gametitle.y = 50;
 		//TextField.getBitmapFont("5x7").smoothing = "none";
-		//this.addChild(bg);
+		this.addChild(bg);
 		//this.addChild(gametitle);
 		rootSprite.addChild(this);
 		/*
 		gametitle = new TextField(100, 100, "The Shrine", 18, Color.WHITE);
 		gametitle.x = center.x - 50;
 		gametitle.y = 32;
-		this.addChild(gametitle);
+		
 		*/
+		this.addChild(bg);
+		rootSprite.addChild(this);
 		buttons = [new TextField(150, 50, "Begin Game", "gameBoy_0", 12, Color.WHITE), new TextField(150, 50, "Credits", "gameBoy_0", 12, Color.WHITE)];
 		for (i in 0...buttons.length) {
 			var button = buttons[i];
@@ -94,7 +96,7 @@ class Main extends Sprite {
 				game.start();
 				Starling.current.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 				transitionOut(function() {
-					//Root.assets.removeSound("GrandpaTallTales");
+					
 					this.removeFromParent();
 					this.dispose();
 				});
@@ -105,7 +107,7 @@ class Main extends Sprite {
 				credits.start();
 				Starling.current.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 				transitionOut(function() {
-					//Root.assets.removeSound("GrandpaTallTales");
+					
 					this.removeFromParent();
 					this.dispose();
 			});
