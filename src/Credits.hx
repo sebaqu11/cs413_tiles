@@ -42,8 +42,7 @@ class Credits extends Sprite {
 			this.y = center.y;
 			this.scaleX = 1;
 			this.scaleY = 1;
-			//bg = new Image(Root.assets.getTexture("Intro"));
-			//this.addChild(bg);
+
 			Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 			credits.x = center.x - 75;
 			credits.y = center.y + 50;

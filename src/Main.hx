@@ -47,22 +47,9 @@ class Main extends Sprite {
 		this.scaleY = 8;
 		Root.assets.playSound("song1", 0, 9999);
 		bg = new Image(Root.assets.getTexture("startImage"));
-		//gametitle = new TextField(350, 50,"", "Extrude_0");
-		//gametitle.text = "";
-		//gametitle.fontSize = 45;
-		//gametitle.color = Color.WHITE;
-		//gametitle.x = center.x - 125;
-		//gametitle.y = 50;
-		//TextField.getBitmapFont("5x7").smoothing = "none";
 		this.addChild(bg);
-		//this.addChild(gametitle);
 		rootSprite.addChild(this);
-		/*
-		gametitle = new TextField(100, 100, "The Shrine", 18, Color.WHITE);
-		gametitle.x = center.x - 50;
-		gametitle.y = 32;
-		
-		*/
+
 		this.addChild(bg);
 		rootSprite.addChild(this);
 		buttons = [new TextField(150, 50, "Begin Game", "gameBoy_0", 12, Color.WHITE), new TextField(150, 50, "Credits", "gameBoy_0", 12, Color.WHITE)];
@@ -99,6 +86,7 @@ class Main extends Sprite {
 					
 					this.removeFromParent();
 					this.dispose();
+					Root.assets.removeSound("song1");
 				});
 			}
 			else if (selection == 1) {
@@ -110,6 +98,7 @@ class Main extends Sprite {
 					
 					this.removeFromParent();
 					this.dispose();
+					Root.assets.removeSound("song1");
 			});
 
 			}
@@ -130,10 +119,7 @@ class Main extends Sprite {
 				Starling.juggler.add(tween);
 			}
 			else if (event.keyCode == Keyboard.DOWN) {
-				/*
-				Root.assets.playSound("SelectOption");
-				*/
-				
+
 				tween = new Tween(this.buttons[selection], rotateSpeed, Transitions.EASE_IN_OUT);
 				tween.animate("fontSize", 12);
 				Starling.juggler.add(tween);
@@ -204,11 +190,6 @@ class Main extends Sprite {
 		Starling.juggler.add(t);
 	}
 
-    public static function deg2rad(deg:Int)
-    {
-        return deg / 180.0 * Math.PI;
-    }
-	
 	public static function arithMod(n:Int, d:Int) : Int {
 		
 		var r = n % d;
