@@ -280,6 +280,7 @@ class Game extends Sprite
 
 	private function spaceRestart(event:KeyboardEvent) {
 		if(event.keyCode == 32){
+			cleanup();
 			restartGame();
 		}
 	}
@@ -288,6 +289,7 @@ class Game extends Sprite
 		this.removeChildren();
 		this.removeEventListeners();
 		this.dispose();
+		cleanup();
 		start();
 	}
 	
